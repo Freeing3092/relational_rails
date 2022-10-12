@@ -1,0 +1,10 @@
+<h1>Books</h1>
+
+<% @books.each do |book| %>
+<h3><%= book.name %></h3>
+<p>Library ID: <%= book.library_id %></p>
+<p>Checked Out? <%= book.checked_out %></p>
+<p>Number of Pages: <%= book.pages %></p>
+<p>Created At: <%= book.created_at %></p>
+<p>Updated At: <%= book.updated_at %></p><br/>
+<% end %>

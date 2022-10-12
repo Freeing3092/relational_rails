@@ -6,4 +6,9 @@ class ParentsController < ApplicationController
   def show
     @library = Library.find(params[:id])
   end
+  
+  def child_show
+    @library = Library.find(params[:id])
+    @library_books = Book.where("library_id = ?", params[:id])
+  end
 end
