@@ -1,5 +1,10 @@
+<h4><a href="/child_table_name">Book Index</a></h4>
+<h4><a href="/parents">Library Index</a></h4>
+<h4><a href="/parents/<%= @library.id %>/child_table_name">Library Book Index</a></h4>
+
 <h1><%= @library.name %></h1>
 
+<h3>Book Count: <%= @library_books.count %></h3>
 <h3>Public Library: <%= @library.public_library %></h3>
 <h3>Employees: <%= @library.employees %></h3>
 <h3>Created At: <%= @library.created_at %></h3>
