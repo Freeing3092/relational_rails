@@ -1,4 +1,4 @@
-class ParentsController < ApplicationController
+class LibrariesController < ApplicationController
   def index
     @libraries = Library.all.order(created_at: :desc)
   end
