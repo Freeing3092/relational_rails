@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_13_124523) do
+ActiveRecord::Schema.define(version: 2022_10_13_201434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "books", force: :cascade do |t|
-    t.integer "library_id"
     t.string "name"
     t.boolean "checked_out"
     t.integer "pages"
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.bigint "library_id"
+    t.index ["library_id"], name: "index_books_on_library_id"
   end
 
   create_table "libraries", force: :cascade do |t|
@@ -32,4 +33,5 @@ ActiveRecord::Schema.define(version: 2022_10_13_124523) do
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }
   end
 
+  add_foreign_key "books", "libraries"
 end

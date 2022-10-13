@@ -5,11 +5,11 @@ class LibrariesController < ApplicationController
   
   def show
     @library = Library.find(params[:id])
-    @library_books = Book.where("library_id = ?", params[:id])
+    @library_books = @library.books.where("library_id = ?", params[:id])
   end
   
-  def child_show
+  def library_books
     @library = Library.find(params[:id])
-    @library_books = Book.where("library_id = ?", params[:id])
+    @library_books = @library.books.where("library_id = ?", params[:id])
   end
 end
