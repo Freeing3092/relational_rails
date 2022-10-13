@@ -5,8 +5,9 @@ class CreateBook < ActiveRecord::Migration[5.2]
       t.string :name
       t.boolean :checked_out
       t.integer :pages
-      t.datetime :created_at, default: -> { 'CURRENT_TIMESTAMP'}
-      t.datetime :updated_at, default: -> { 'CURRENT_TIMESTAMP'}
+      t.timestamp
+      # t.datetime :created_at, default: -> { 'CURRENT_TIMESTAMP'}
+      # t.datetime :updated_at, default: -> { 'CURRENT_TIMESTAMP'}
     end
   end
 end
