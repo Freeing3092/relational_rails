@@ -21,6 +21,31 @@ RSpec.describe Library do
         visit "/libraries/#{@alexandria.id}"
         expect(page).to have_content("Book Count: 2")
       end
+      
+      it "I see a link at the top of the page that takes me to the Child Index" do
+        visit "/libraries/#{@alexandria.id}"
+        expect(page).to have_link("Book Index")
+        
+        click_link("Book Index")
+        expect(current_path).to eq("/books")
+      end
+      
+      it "I see a link at the top of the page that takes me to the Parent Index" do
+        visit "/libraries/#{@alexandria.id}"
+        expect(page).to have_link("Library Index")
+        
+        click_link("Library Index")
+        expect(current_path).to eq("/libraries")
+      end
+      
+      it "I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')" do
+        visit "/libraries/#{@alexandria.id}"
+        expect(page).to have_link("Library Book Index")
+        
+        click_link("Library Book Index")
+        expect(current_path).to eq("/libraries/#{@alexandria.id}/books")
+        
+      end
     end
   end
 end

@@ -24,6 +24,22 @@ RSpec.describe Book do
         expect(page).to have_content('Checked Out? false')
         expect(page).to have_content('Number of Pages: 357')
       end
+      
+      it "I see a link at the top of the page that takes me to the Child Index" do
+        visit "libraries/#{@alexandria.id}/books"
+        expect(page).to have_link("Book Index")
+        
+        click_link("Book Index")
+        expect(current_path).to eq("/books")
+      end
+      
+      it "I see a link at the top of the page that takes me to the Parent Index" do
+        visit "libraries/#{@alexandria.id}/books"
+        expect(page).to have_link("Library Index")
+        
+        click_link("Library Index")
+        expect(current_path).to eq("/libraries")
+      end
     end
   end
 end

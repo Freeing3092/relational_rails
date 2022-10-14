@@ -25,6 +25,22 @@ RSpec.describe Library do
         expect(page).to have_content('Alexandria')
         expect(page).to have_content('Denver Public Library')
       end
+      
+      it "I see a link at the top of the page that takes me to the Child Index" do
+        visit "/libraries"
+        expect(page).to have_link("Book Index")
+        
+        click_link("Book Index")
+        expect(current_path).to eq("/books")
+      end
+      
+      it "I see a link at the top of the page that takes me to the Parent Index" do
+        visit "/libraries"
+        expect(page).to have_link("Library Index")
+        
+        click_link("Library Index")
+        expect(current_path).to eq("/libraries")
+      end
     end
   end
 end
