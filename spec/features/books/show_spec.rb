@@ -13,16 +13,13 @@ RSpec.describe Book do
   # (data from each column that is on the child table)
   
   describe 'As a visitor' do
-    describe "When I visit '/books'" do
+    describe "When I visit '/books/:id'" do
       it "I see the name of each Book record in the system including attributes" do
-        visit "/books"
+        visit "/books/#{@potter.id}"
         
         expect(page).to have_content("Harry Potter and The Sorcer's Stone")
         expect(page).to have_content('Checked Out? true')
         expect(page).to have_content('Number of Pages: 224')
-        expect(page).to have_content("Harry Potter and The Chamber of Secrets")
-        expect(page).to have_content('Checked Out? false')
-        expect(page).to have_content('Number of Pages: 357')
       end
     end
   end

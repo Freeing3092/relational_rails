@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   
   get '/libraries', to: 'libraries#index'
   get '/libraries/:id', to: 'libraries#show'
-  get '/libraries/:id/child_table_name', to: 'libraries#child_show'
+  get '/libraries/:id/books', to: 'libraries#library_books'
   
-  get '/child_table_name', to: 'childs#index'
-  get '/child_table_name/:id', to: 'childs#show'
+  get '/books', to: 'books#index'
+  get '/books/:id', to: 'books#show'
 end
