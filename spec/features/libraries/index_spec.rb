@@ -24,6 +24,8 @@ RSpec.describe Library do
         visit '/libraries'
         expect(page).to have_content('Alexandria')
         expect(page).to have_content('Denver Public Library')
+        save_and_open_page
+        expect('Denver Public Library').to appear_before('Alexandria')
       end
       
       it "I see a link at the top of the page that takes me to the Child Index" do
