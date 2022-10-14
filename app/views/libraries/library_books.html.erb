@@ -1,9 +1,9 @@
-<h4><a href="/child_table_name">Book Index</a></h4>
-<h4><a href="/parents">Library Index</a></h4>
+<h4><a href="/books">Book Index</a></h4>
+<h4><a href="/libraries">Library Index</a></h4>
 
-<h1>Books</h1>
+<h1><%= @library.name %></h1>
 
-<% @books.each do |book| %>
+<% @library_books.each do |book| %>
 <h3><%= book.name %></h3>
 <p>Library ID: <%= book.library_id %></p>
 <p>Checked Out? <%= book.checked_out %></p>
