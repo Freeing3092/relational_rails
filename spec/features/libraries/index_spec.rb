@@ -8,8 +8,9 @@ RSpec.describe Library do
 # Then I see the name of each parent record in the system
   before :each do
     @alexandria = Library.create!(name: 'Alexandria', public_library: false, employees: 1)
+    @dpl = Library.create!(name: 'Denver Public Library', public_library: true, employees: 1)
     @potter = @alexandria.books.create!(name: "Harry Potter and The Sorcer's Stone", checked_out: true, pages: 224)
-    @potter = @alexandria.books.create!(name: "Harry Potter and The Chamber of Secrets", checked_out: false, pages: 357)
+    @potter2 = @alexandria.books.create!(name: "Harry Potter and The Chamber of Secrets", checked_out: false, pages: 357)
   end
   
   describe 'As a visitor' do
@@ -17,6 +18,12 @@ RSpec.describe Library do
       it "I see the name of each parent record in the system" do
         visit '/libraries'
         expect(page).to have_content('Alexandria')
+      end
+      
+      it "The libraries are sorted with the most recently created on top" do
+        visit '/libraries'
+        expect(page).to have_content('Alexandria')
+        expect(page).to have_content('Denver Public Library')
       end
     end
   end
