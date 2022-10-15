@@ -44,7 +44,15 @@ RSpec.describe Library do
         
         click_link("Library Book Index")
         expect(current_path).to eq("/libraries/#{@alexandria.id}/books")
-        
+      end
+      
+      it "I see a link to update the parent 'Update Library', when I click that
+      link, I am taken to 'libraries/:id/edit'" do
+      visit "/libraries/#{@alexandria.id}"
+      expect(page).to have_link("Update Library")
+      
+      click_link("Update Library")
+      expect(current_path).to eq("/libraries/#{@alexandria.id}/edit")
       end
     end
   end

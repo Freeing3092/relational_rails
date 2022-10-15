@@ -14,7 +14,6 @@ class LibrariesController < ApplicationController
   end
   
   def new
-    # redirect_to "/libraries"
   end
   
   def create
@@ -25,6 +24,20 @@ class LibrariesController < ApplicationController
       })
       library.save
       redirect_to "/libraries"
-    
+  end
+  
+  def edit
+    @library = Library.find(params[:id])
+  end
+  
+  def update
+    library = Library.find(params[:id])
+    library.update({
+      name: params[:name],
+      public_library: params[:public_library],
+      employees: params[:employees],
+      })
+      library.save
+    redirect_to "/libraries/#{library.id}"
   end
 end
