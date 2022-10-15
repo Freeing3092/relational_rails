@@ -2,10 +2,6 @@ require "rails_helper"
 
 RSpec.describe Library do
   
-# For each parent table
-# As a visitor
-# When I visit '/libraries'
-# Then I see the name of each parent record in the system
   before :each do
     @alexandria = Library.create!(name: 'Alexandria', public_library: false, employees: 1)
     @dpl = Library.create!(name: 'Denver Public Library', public_library: true, employees: 1)
@@ -24,7 +20,6 @@ RSpec.describe Library do
         visit '/libraries'
         expect(page).to have_content('Alexandria')
         expect(page).to have_content('Denver Public Library')
-        save_and_open_page
         expect('Denver Public Library').to appear_before('Alexandria')
       end
       
@@ -42,6 +37,15 @@ RSpec.describe Library do
         
         click_link("Library Index")
         expect(current_path).to eq("/libraries")
+      end
+      
+      it "I see a link to create a new Parent record, 'New Library'. When I
+      click that link I am taken to 'libraries/new'" do
+        visit "/libraries"
+        expect(page).to have_link("New Library")
+        
+        click_link("New Library")
+        expect(current_path).to eq("/libraries/new")
       end
     end
   end
