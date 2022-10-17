@@ -62,6 +62,15 @@ RSpec.describe Book do
       expect(page).to have_content(second_book)
       expect(first_book).to appear_before(second_book)
       end
+      
+      it "next to every book, I see a link to edit that book's info. When I
+      click that link I will be taken to '/books/:id/edit'" do
+      visit "libraries/#{@alexandria.id}/books"
+        expect(page).to have_link("Update #{@potter.name}")
+        
+        click_link("Update #{@potter.name}")
+        expect(current_path).to eq("/books/#{@potter.id}/edit")
+      end
     end
   end
 end

@@ -50,6 +50,15 @@ RSpec.describe Library do
         click_link("New Library")
         expect(current_path).to eq("/libraries/new")
       end
+      
+      it "Next to every library I see a link to edit that library's info. When
+      I click the link I am taken to a page where I can update that info." do
+        visit "/libraries"
+        expect(page).to have_link("Update #{@alexandria.name}")
+        
+        click_link("Update #{@alexandria.name}")
+        expect(current_path).to eq("/libraries/#{@alexandria.id}/edit")
+      end
     end
   end
 end
