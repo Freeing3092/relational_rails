@@ -16,11 +16,14 @@ RSpec.describe Library do
         expect(page).to have_content('Alexandria')
       end
       
-      it "The libraries are sorted with the most recently created on top" do
+      it "The libraries are sorted with the most recently created on top
+      and next to each of the records I see when it was created" do
         visit '/libraries'
         expect(page).to have_content('Alexandria')
         expect(page).to have_content('Denver Public Library')
         expect('Denver Public Library').to appear_before('Alexandria')
+        expect(page).to have_content(@alexandria.created_at)
+        expect(page).to have_content(@dpl.created_at)
       end
       
       it "I see a link at the top of the page that takes me to the Child Index" do
