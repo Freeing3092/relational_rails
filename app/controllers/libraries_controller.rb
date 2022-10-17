@@ -5,7 +5,6 @@ class LibrariesController < ApplicationController
   
   def show
     @library = Library.find(params[:id])
-    @library_books = @library.books.where("library_id = ?", params[:id])
   end
   
   def library_books
