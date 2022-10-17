@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get '/libraries/new', to: 'libraries#new'
   get '/libraries/:id', to: 'libraries#show'
   get '/libraries/:id/books', to: 'libraries#library_books'
-  get '/libraries/:id/sort_books', to: 'libraries#sort_library_books'
   get '/libraries/:id/books/new', to: 'books#new'
   
   get '/books', to: 'books#index'

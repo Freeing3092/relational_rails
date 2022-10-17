@@ -48,24 +48,24 @@ RSpec.describe Book do
       it "I see a link to sort books in alphabetical order. When I click
       the link, I am taken back to the '/libraries/:id/books' index page where
       I see all the library's books in alphabetical order" do
-      visit "libraries/#{@alexandria.id}/books"
-      
-      expect(page).to have_link('Sort Books Alphabetically')
-      click_link('Sort Books Alphabetically')
-      
-      expect(current_path).to eq("/libraries/#{@alexandria.id}/sort_books")
-      
-      first_book = "Harry Potter and The Chamber of Secrets"
-      second_book = "Harry Potter and The Sorcer's Stone"
-      
-      expect(page).to have_content(first_book)
-      expect(page).to have_content(second_book)
-      expect(first_book).to appear_before(second_book)
+        visit "libraries/#{@alexandria.id}/books"
+        
+        expect(page).to have_link('Sort Books Alphabetically')
+        click_link('Sort Books Alphabetically')
+        
+        expect(current_path).to eq("/libraries/#{@alexandria.id}/books")
+        
+        first_book = "Harry Potter and The Chamber of Secrets"
+        second_book = "Harry Potter and The Sorcer's Stone"
+        
+        expect(page).to have_content(first_book)
+        expect(page).to have_content(second_book)
+        expect(first_book).to appear_before(second_book)
       end
       
       it "next to every book, I see a link to edit that book's info. When I
       click that link I will be taken to '/books/:id/edit'" do
-      visit "libraries/#{@alexandria.id}/books"
+        visit "libraries/#{@alexandria.id}/books"
         expect(page).to have_link("Update #{@potter.name}")
         
         click_link("Update #{@potter.name}")

@@ -9,16 +9,11 @@ class LibrariesController < ApplicationController
   
   def library_books
     @library = Library.find(params[:id])
-    @library_books = @library.books.where("library_id = ?", params[:id])
-  end
-  
-  def sort_library_books
-    @library = Library.find(params[:id])
-    @library_books = @library.books.where("library_id = ?", params[:id])
-    @library_books = @library_books.order(:name)
-    
-    # The below method will render the page correctly, but the URL needs to be fixed
-    render :library_books
+    if params[:alpha]
+      @library_books = @library.order_by_alpha
+    else
+      @library_books = @library.books.where("library_id = ?", params[:id])
+    end
   end
   
   def new
