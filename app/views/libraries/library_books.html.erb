@@ -1,10 +1,13 @@
 <h4><a href="/books">Book Index</a></h4>
 <h4><a href="/libraries">Library Index</a></h4>
+<h4><a href="/libraries/<%= "#{@library.id}"%>/books/new">Create Book</a></h4>
+<h4><a href="/libraries/<%= "#{@library.id}"%>/sort_books">Sort Books Alphabetically</a></h4>
 
 <h1><%= @library.name %></h1>
 
 <% @library_books.each do |book| %>
-<h3><%= book.name %></h3>
+<h3><%= book.name %> 
+  <a href="/books/<%= book.id %>/edit"> Update <%= book.name %></a></h3>
 <p>Library ID: <%= book.library_id %></p>
 <p>Checked Out? <%= book.checked_out %></p>
 <p>Number of Pages: <%= book.pages %></p>

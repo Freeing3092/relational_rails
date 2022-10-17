@@ -7,11 +7,6 @@ RSpec.describe Book do
     @potter2 = @alexandria.books.create!(name: "Harry Potter and The Chamber of Secrets", checked_out: false, pages: 357)
   end
   
-  # As a visitor
-  # When I visit '/child_table_name'
-  # Then I see each Child in the system including the Child's attributes
-  # (data from each column that is on the child table)
-  
   describe 'As a visitor' do
     describe "When I visit '/books/:id'" do
       it "I see the name of each Book record in the system including attributes" do
@@ -36,6 +31,15 @@ RSpec.describe Book do
         
         click_link("Library Index")
         expect(current_path).to eq("/libraries")
+      end
+      
+      it "I see a link to update that Book 'Update Book'. when I click the link
+      I am taken to '/books/:id/edit'" do
+        visit "/books/#{@potter.id}"
+        expect(page).to have_link("Update Book")
+        
+        click_link("Update Book")
+        expect(current_path).to eq("/books/#{@potter.id}/edit")
       end
     end
   end

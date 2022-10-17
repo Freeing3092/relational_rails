@@ -1,0 +1,11 @@
+<form action="/libraries/<%= "#{@library.id}" %>/books/new" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Book Name</p>
+  <input type="text" name="name">
+  <p>Checked Out?</p>
+  <input type="text" name="checked_out">
+  <p>Pages</p>
+  <input type="text" name="pages">
+  <input type="hidden" name="library_id" value=<%= "#{@library.id}" %>>
+  <input type="submit" name="Create Book">
+</form>

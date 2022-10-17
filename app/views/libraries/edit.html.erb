@@ -1,0 +1,11 @@
+<form action="/libraries/<%="#{@library.id}"%>/edit" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH">
+  <p>Library Name:</p>
+  <input type="text" name="name">
+  <p>Public Library?</p>
+  <input type="text" name="public_library">
+  <p>Employees:</p>
+  <input type="text" name="employees"><br>
+  <input type="submit" name="Submit"/>
+</form>
