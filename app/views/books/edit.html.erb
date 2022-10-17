@@ -1,0 +1,13 @@
+<form action="/books/<%= "#{@book.id}" %>/edit" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH">
+  <p>Book Name</p>
+  <input type="textarea" name="name" value="<%= @book.name %>">
+  <p>Checked Out?</p>
+  <input type="text" name="checked_out" value=<%= "#{@book.checked_out}" %>>
+  <p>Pages</p>
+  <input type="text" name="pages" value=<%= "#{@book.pages}" %>>
+  <p>Library ID</p>
+  <input type="text" name="library_id" value=<%= "#{@book.library_id}" %>><br>
+  <input type="submit" name="Submit">
+</form>
