@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Book do
+RSpec.describe 'Library books index' do
   before :each do
     @alexandria = Library.create!(name: 'Alexandria', public_library: false, employees: 1)
     @potter = @alexandria.books.create!(name: "Harry Potter and The Sorcer's Stone", checked_out: true, pages: 224)
