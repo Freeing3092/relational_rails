@@ -6,7 +6,8 @@
 
 <% @books.each do |book| %>
 <h3><%= book.name %> 
-  <a href="/books/<%= book.id %>/edit"> Update <%= book.name %></a></h3>
+  <a href="/books/<%= book.id %>/edit"> Update <%= book.name %></a>
+  <%= link_to "Delete #{book.name}", "/books/#{book.id}", :method => :delete %></h3>
 <p>Library ID: <%= book.library_id %></p>
 <p>Checked Out? <%= book.checked_out %></p>
 <p>Number of Pages: <%= book.pages %></p>

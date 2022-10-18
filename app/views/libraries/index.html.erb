@@ -7,5 +7,6 @@
 <% @libraries.each do |library| %>
 <h3><%= library.name %> - 
   Created At: <%= library.created_at %> 
+  <%= link_to "Delete #{library.name}", "/libraries/#{library.id}", :method => :delete %>
   <a href="/libraries/<%= "#{library.id}" %>/edit">Update <%= library.name %></a></h3>
 <% end %>
