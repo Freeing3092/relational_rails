@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+This project includes two database tables: Library (parent) and Book (child).
+The tables are linked with a `foreign_key`- `library_id` in the Book table which relates to the Primary key in the Library table (one-to-many relationship). Using the Rails framework, a user is able to CRUD resources.
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Schema.png](relational_rails_schema.png?raw=true "Title")
