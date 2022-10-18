@@ -8,3 +8,4 @@
 <p>Number of Pages: <%= @book.pages %></p>
 <p>Created At: <%= @book.created_at %></p>
 <p>Updated At: <%= @book.updated_at %></p><br/>
+<%= link_to "Delete #{@book.name}", "/books/#{@book.id}", :method => :delete %>

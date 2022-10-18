@@ -41,6 +41,17 @@ RSpec.describe 'Book show' do
         click_link("Update Book")
         expect(current_path).to eq("/books/#{@potter.id}/edit")
       end
+      
+      it "I see a link to delete that Book 'Delete Book'. when I click the link
+      the book is deleted and I am taken to the books index page where I no
+      longer see the book" do
+        visit "/books/#{@potter.id}"
+        expect(page).to have_link("Delete #{@potter.name}")
+        
+        click_link("Delete #{@potter.name}")
+        expect(current_path).to eq("/books")
+        expect(page).to_not have_content(@potter.name)
+      end
     end
   end
 end
