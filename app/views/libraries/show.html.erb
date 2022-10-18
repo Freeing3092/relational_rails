@@ -11,3 +11,4 @@
 <h3>Updated At: <%= @library.updated_at %></h3>
 
 <h3><a href="/libraries/<%= @library.id %>/edit">Update Library</a></h3>
+<h3><%= link_to "Delete #{@library.name}", "/libraries/#{@library.id}", :method => :delete%></h3>

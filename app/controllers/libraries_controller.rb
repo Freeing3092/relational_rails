@@ -43,4 +43,12 @@ class LibrariesController < ApplicationController
       library.save
     redirect_to "/libraries/#{library.id}"
   end
+  
+  def destroy
+    library = Library.find(params[:id])
+    library_books = library.books.where("library_id = ?", params[:id])
+    library_books.each {|book| book.destroy}
+    library.destroy
+    redirect_to '/libraries'
+  end
 end

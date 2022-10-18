@@ -48,11 +48,23 @@ RSpec.describe 'Library show' do
       
       it "I see a link to update the parent 'Update Library', when I click that
       link, I am taken to 'libraries/:id/edit'" do
-      visit "/libraries/#{@alexandria.id}"
-      expect(page).to have_link("Update Library")
+        visit "/libraries/#{@alexandria.id}"
+        expect(page).to have_link("Update Library")
+        
+        click_link("Update Library")
+        expect(current_path).to eq("/libraries/#{@alexandria.id}/edit")
+      end
       
-      click_link("Update Library")
-      expect(current_path).to eq("/libraries/#{@alexandria.id}/edit")
+      it "I see a link to delete the Library. When I click the link 
+      'Delete Parent' the library is deleted and all the library's books 
+      are deleted. I am then redirected to the libraries index page where I
+      no longer see this parent" do
+        visit "/libraries/#{@alexandria.id}"
+        expect(page).to have_link("Delete #{@alexandria.name}")
+        
+        click_link("Delete #{@alexandria.name}")
+        expect(current_path).to eq("/libraries")
+        expect(page).to_not have_content(@alexandria.name)
       end
     end
   end
