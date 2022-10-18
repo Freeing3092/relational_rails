@@ -45,6 +45,18 @@ RSpec.describe 'Books index' do
         click_link("Update #{@potter.name}")
         expect(current_path).to eq("/books/#{@potter.id}/edit")
       end
+      
+      it "Next to every child, I see a link to delete that child. When I click
+      the link I should be taken to the `child_table_name` index page where I
+      no longer see that child" do
+        visit "/books"
+        expect(page).to have_link("Delete #{@potter.name}")
+        
+        click_link("Delete #{@potter.name}")
+        
+        expect(current_path).to eq("/books")
+        expect(page).to_not have_content(@potter.name)
+      end
     end
   end
 end
