@@ -9,7 +9,9 @@ class LibrariesController < ApplicationController
   
   def library_books
     @library = Library.find(params[:id])
-    if params[:alpha]
+    if !params[:minimum_page_count].nil?
+      @library_books = @library.books.filter_by_page_count(params[:minimum_page_count])
+    elsif params[:alpha]
       @library_books = @library.order_by_alpha
     else
       @library_books = @library.books.where("library_id = ?", params[:id])

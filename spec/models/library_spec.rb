@@ -21,4 +21,11 @@ RSpec.describe Library, type: :model do
   it "#order_by_alpha sorts the library's books by alphabetical order" do
     expect(@alexandria.order_by_alpha).to eq([@potter2, @potter])
   end
+  
+  it "#filter_by_page_count returns books with a page count greater than the 
+  number provided" do
+    expect(@alexandria.books.filter_by_page_count(300)).to eq([@potter2])
+    expect(@alexandria.books.filter_by_page_count(100)).to eq([@potter, @potter2])
+    expect(@alexandria.books.filter_by_page_count(500)).to eq([])
+  end
 end

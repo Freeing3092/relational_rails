@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/libraries/new', to: 'libraries#create'
   
   get '/libraries/:id/books', to: 'libraries#library_books'
+  post '/libraries/:id/books', to: 'libraries#library_books'
   get '/libraries/:id/books/new', to: 'books#new'
   post '/libraries/:id/books/new', to: 'books#create'
   get 'libraries/:id/edit', to: 'libraries#edit'
