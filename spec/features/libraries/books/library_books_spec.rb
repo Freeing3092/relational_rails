@@ -71,6 +71,22 @@ RSpec.describe 'Library books index' do
         click_link("Update #{@potter.name}")
         expect(current_path).to eq("/books/#{@potter.id}/edit")
       end
+      
+      xit "I see a form that allows me to input a number value When I input a
+      number value and click the submit button that reads 'Only return records
+      with more than `number` of `pages`' Then I am brought back to the current
+      index page with only the records that meet that threshold shown." do
+        visit "libraries/#{@alexandria.id}/books"
+        expect(page).to have_content(@potter2.name)
+        expect(page).to have_content(@potter.name)
+        
+        fill_in "minimum_page_count", with: "300"
+        click_button('Only return records with more than this number of pages')
+        
+        expect(current_path).to eq("/libraries/#{@alexandria.id}/books")
+        expect(page).to have_content(@potter2.name)
+        expect(page).to_not have_content(@potter.name)
+      end
     end
   end
 end

@@ -58,6 +58,18 @@ RSpec.describe 'Library index' do
         click_link("Update #{@alexandria.name}")
         expect(current_path).to eq("/libraries/#{@alexandria.id}/edit")
       end
+      
+      it "Next to every parent, I see a link to delete that parent. When I
+      click the link. I am returned to the Parent Index Page where I no longer
+      see that parent" do
+        visit "/libraries"
+        
+        expect(page).to have_link("Delete #{@alexandria.name}")
+        click_link("Delete #{@alexandria.name}")
+        
+        expect(current_path).to eq("/libraries")
+        expect(page).to_not have_content(@alexandria.name)
+      end
     end
   end
 end
