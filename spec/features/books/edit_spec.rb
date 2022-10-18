@@ -1,11 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Book do
+RSpec.describe 'Book edit page' do
   before :each do
     @alexandria = Library.create!(name: 'Alexandria', public_library: false, employees: 1)
     @potter = @alexandria.books.create!(name: "Harry Potter and The Sorcer's Stone", checked_out: true, pages: 224)
     @potter2 = @alexandria.books.create!(name: "Harry Potter and The Chamber of Secrets", checked_out: false, pages: 357)
-    # binding.pry
   end
   
   describe 'As a visitor' do
@@ -27,9 +26,5 @@ RSpec.describe Book do
       expect(page).to have_content('Number of Pages: 458')
       expect(page).to have_content("Library ID: #{@potter.library_id}")
     end
-    
-    
-      
-    
   end
 end

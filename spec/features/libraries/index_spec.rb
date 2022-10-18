@@ -1,7 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Library do
-  
+RSpec.describe 'Library index' do
   before :each do
     @alexandria = Library.create!(name: 'Alexandria', public_library: false, employees: 1)
     @dpl = Library.create!(name: 'Denver Public Library', public_library: true, employees: 1)

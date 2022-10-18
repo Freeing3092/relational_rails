@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Library do
+RSpec.describe 'New Library' do
   describe 'As a visitor' do
     it "When I fill out the form with a new parent's attributes and I click
     the button 'Create Parent' to submit the form, then a `POST` request is sent 
