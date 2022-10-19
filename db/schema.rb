@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2022_10_13_201434) do
     t.string "name"
     t.boolean "checked_out"
     t.integer "pages"
-    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }
-    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "library_id"
     t.index ["library_id"], name: "index_books_on_library_id"
   end
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2022_10_13_201434) do
     t.string "name"
     t.boolean "public_library"
     t.integer "employees"
-    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }
-    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "books", "libraries"

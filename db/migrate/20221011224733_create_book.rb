@@ -1,11 +1,10 @@
 class CreateBook < ActiveRecord::Migration[5.2]
   def change
     create_table :books do |t|
-      t.integer :library_id
       t.string :name
       t.boolean :checked_out
       t.integer :pages
-      t.timestamp default: -> { 'CURRENT_TIMESTAMP'}
+      t.timestamps #default: -> { 'CURRENT_TIMESTAMP'}
     end
   end
 end
